@@ -178,8 +178,13 @@ export function numberFormat (num) {
     return `00000${num}`
   }
 }
+// 数字格式化
+export function formatNum (num) {
+  return num > 9 ? num : `0${num}`
+}
 
 export default {
+  formatNum,
   formatTime,
   sortByKey,
   formatDate,

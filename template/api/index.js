@@ -1,5 +1,4 @@
-import config from '&/config'
-import fetch from '&/utils/fetch'
+// import fetch from '&/utils/fetch'
 // import md5 from 'md5'
 
 export default {

@@ -1,5 +1,6 @@
 <template>
-  <div class="baby">
+  <div class="contain">
+    welcome to All_mp
   </div>
 </template>
 

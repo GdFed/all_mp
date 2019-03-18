@@ -44,5 +44,4 @@ export default {
 </script>
 
 <style lang="scss">
-@import './recover.scss';
 </style>
