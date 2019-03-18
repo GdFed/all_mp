@@ -67,7 +67,7 @@ fly.interceptors.response.use(
         const timeEnd = +new Date()
         let reportUri = 'https://logreport.huishoubao.com/hjxapps/?1='
         let affix = parseInt(timeEnd / 1000)
-        affix += '=HsbFlzxAgent==WelfareAgent=111.230.118.168='
+        affix += `=${conf.logreport.callee}=${conf.logreport.calleeIp}=${conf.logreport.caller}=${conf.logreport.callerIp}=`
         affix += `${config.routePath}=${code}=${timeEnd - config.startTime}`
 
         // 可用性上报

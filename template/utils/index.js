@@ -40,19 +40,6 @@ export function buildQuerys (url, obj) {
   return url
 }
 
-/**
- * 显示错误信息弹窗
- */
-export function toast ({ content, onFinish }) {
-  wx.showModal({
-    title: '提示',
-    content: content,
-    showCancel: false,
-    complete () {
-      onFinish && onFinish()
-    }
-  })
-}
 
 // 数字签名
 export function signUrl (config) {
@@ -76,7 +63,7 @@ export function signUrl (config) {
     sign += objKeys[j] + obj[objKeys[j]]
     queryString += objKeys[j] + '=' + obj[objKeys[j]] + '&'
   }
-  sign += 'b7cab12b2b81385dd2cccb8ce67e4998'
+  sign += 'signkey'
   sign = sha1(sign)
   queryString += 'sign=' + sign
   return config.url.split('?')[0] + queryString
@@ -114,16 +101,6 @@ export const parseCountDown = (number, useDay = true) => {
   }
 }
 
-export function showModal ({ content, onFinish }) {
-  wx.showModal({
-    title: '提示',
-    content: content,
-    showCancel: false,
-    complete () {
-      onFinish && onFinish()
-    }
-  })
-}
 export function moneyFormat (money, type) {
   if (!parseInt(money)) return type ? '0' : '0.00'
   return type ? parseInt(money / 100) : `${parseInt(money / 100)}.${parseInt(money % 100 / 10)}${money % 10}`
@@ -163,21 +140,6 @@ export function throttle (fn, threshhold) {
   }
 }
 
-export function numberFormat (num) {
-  if (num > 100000) {
-    return num
-  } else if (num > 10000) {
-    return `0${num}`
-  } else if (num > 1000) {
-    return `00${num}`
-  } else if (num > 100) {
-    return `000${num}`
-  } else if (num > 10) {
-    return `0000${num}`
-  } else {
-    return `00000${num}`
-  }
-}
 // 数字格式化
 export function formatNum (num) {
   return num > 9 ? num : `0${num}`

@@ -13,7 +13,6 @@ export default {
     // console.log(path, scene, query)
   },
   onShow (data) {
-    this.$store.dispatch('checkLogin')
     // 版本升级提示
     try {
       const updateManager = wx.getUpdateManager()

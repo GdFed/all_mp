@@ -1,5 +1,4 @@
 // import fetch from '&/utils/fetch'
-// import md5 from 'md5'
 
 export default {
   // formId 收集

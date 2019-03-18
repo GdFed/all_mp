@@ -2,10 +2,16 @@ export const isProd = process.env.NODE_ENV === 'production'
 
 export let pid = '1196'
 export const platform = '2'
-export const iconRoot = 'https://s1.huishoubao.com/static/m/wxapp/'
 export const apiBase = 'https://api.huishoubao.com/'
 export const baseHost = 'https://mobile.huishoubao.com/'
 export const selfReportUri = 'https://logreport.huishoubao.com/selfreport/'
+
+export const logreport = {
+  callee: '被调用者ID',
+  calleeIp: '被调用者IP',
+  caller: '调用者ID',
+  callerIp: '调用者IP'
+}
 
 export const validations = [{
   name: 'userName',
@@ -32,11 +38,6 @@ export const validations = [{
     error: '身份证输入不正确'
   }]
 }]
-// 高德地图api key
-export const gdKey = '19932279131320c2dbbbd31c7a8a05e7'
-
-// 服务电话
-export const serviceTel = '400-080-9966'
 
 // 小程序版本号
 export const version = 'V1.0.0'
@@ -48,9 +49,8 @@ export default {
   baseHost,
   platform,
   apiBase,
-  gdKey,
   validations,
-  iconRoot,
   selfReportUri,
-  serviceTel
+  serviceTel,
+  logreport
 }

@@ -4,17 +4,9 @@ import App from './App'
 import store from './store/index'
 import apis from './api/index'
 import wxs from './api/wxs'
-import { isProd, version } from './config'
 import http from './utils/fetch'
+import { isProd, version } from './config'
 require('core-js/library/modules/_global.js').console = console
-
-// Promise.prototype.finally = function (callback) {
-//   let P = this.constructor
-//   return this.then(
-//     value => P.resolve(callback()).then(() => value),
-//     reason => P.resolve(callback()).then(() => { throw reason })
-//   )
-// }
 
 Vue.config.productionTip = false
 App.mpType = 'app'
