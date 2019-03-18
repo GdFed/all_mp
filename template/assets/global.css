@@ -1,0 +1,22 @@
+@import url("font.scss");
+
+page {
+  display: flex;
+  min-height: 100%;
+}
+
+.page {
+  /* overflow: hidden; */
+  width: 100%;
+  flex: 1;
+}
+
+.input-placeholder {
+  font-size: 13px;
+  color: #949BA1;
+}
+
+input {
+  font-size: 13px;
+  color: #2B2D2E;
+}

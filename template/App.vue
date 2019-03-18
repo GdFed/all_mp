@@ -1,50 +1,48 @@
 <script>
-export default {
-  created () {
-    // 调用API从本地缓存中获取数据
-    /*
-     * 平台 api 差异的处理方式:  api 方法统一挂载到 mpvue 名称空间, 平台判断通过 mpvuePlatform 特征字符串
-     * 微信：mpvue === wx, mpvuePlatform === 'wx'
-     * 头条：mpvue === tt, mpvuePlatform === 'tt'
-     * 百度：mpvue === swan, mpvuePlatform === 'swan'
-     * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
-     */
+import '&/assets/global.css'
+import { mapState } from 'vuex'
 
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync({
-        key: 'logs',
-        data: logs
-      })
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync('logs', logs)
-    }
+export default {
+  computed: {
+    ...mapState({
+      systemInfo: (state) => state.user.systemInfo
+    })
   },
-  log () {
-    console.log(`log at:${Date.now()}`)
+  onLaunch () {
+    // const { path, scene, query } = wx.getLaunchOptionsSync()
+    // console.log(path, scene, query)
+  },
+  onShow (data) {
+    this.$store.dispatch('checkLogin')
+    // 版本升级提示
+    try {
+      const updateManager = wx.getUpdateManager()
+      updateManager.onCheckForUpdate(function (res) {
+        console.log('请求完新版本信息的回调', res.hasUpdate)
+      })
+      updateManager.onUpdateReady(function () {
+        wx.showModal({
+          title: '更新提示',
+          content: '新版本已经准备好，是否重启应用？',
+          success: function (res) {
+            if (res.confirm) {
+              updateManager.applyUpdate()
+            }
+          }
+        })
+      })
+    } catch (e) {
+      console.log('版本不支持自动更新')
+    }
+
+    // 全局获取本机信息
+    if (!this.systemInfo) {
+      this.$store.dispatch('getSystemInfo')
+    }
   }
 }
 </script>
 
-<style>
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
-/* this rule will be remove */
-* {
-  transition: width 2s;
-  -moz-transition: width 2s;
-  -webkit-transition: width 2s;
-  -o-transition: width 2s;
-}
+<style lang="scss">
+@import './recover.scss';
 </style>
