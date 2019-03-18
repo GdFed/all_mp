@@ -40,7 +40,6 @@ export function buildQuerys (url, obj) {
   return url
 }
 
-
 // 数字签名
 export function signUrl (config) {
   // querystring
@@ -150,6 +149,5 @@ export default {
   formatTime,
   sortByKey,
   formatDate,
-  throttle,
-  numberFormat
+  throttle
 }

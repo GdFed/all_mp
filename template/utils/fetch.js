@@ -1,5 +1,5 @@
 import Fly from 'flyio/dist/npm/wx'
-import { buildQuery, showModal, signUrl } from './index'
+import { buildQuery, signUrl } from './index'
 import conf from '../config'
 
 const fly = new Fly()
@@ -89,7 +89,7 @@ fly.interceptors.response.use(
     } catch (e) {
       err = `未知错误：${err.status}`
     }
-    showModal({
+    wx.showModal({
       title: '错误提示',
       content: err,
       showCancel: false

@@ -51,6 +51,5 @@ export default {
   apiBase,
   validations,
   selfReportUri,
-  serviceTel,
   logreport
 }
