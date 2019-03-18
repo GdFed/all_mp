@@ -1,30 +1,11 @@
 {
   "pages": [
-    "pages/index/main",
-    "pages/auth/phone/main",
-    "pages/auth/user/main",
-    "pages/floor/main",
-    "pages/share-auth-phone/main",
-    "pages/h5/main",
-    "pages/login/main",
-    "pages/bind/main",
-    "pages/detail/main",
-    "pages/goods-wheel/main",
-    "pages/share/main",
-    "pages/sign/main",
-    "pages/sign-calendar/main",
-    "pages/baby-info/main",
-    "pages/task/main",
-    "pages/tips/main",
-    "pages/round-welcome/main",
-    "pages/round/main",
-    "pages/my-round/main"
+    "pages/index/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Baby Go",
+    "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
-  },
-  "navigateToMiniProgramAppIdList": ["wxdd35de8f647a231f"]
+  }
 }
