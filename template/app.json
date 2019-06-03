@@ -2,10 +2,11 @@
   "pages": [
     "pages/index/main"
   ],
+  "cloud": true,
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "W-UI",
     "navigationBarTextStyle": "black"
   }
 }

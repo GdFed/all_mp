@@ -1,8 +1,7 @@
-import wxs from '&/api/wxs'
-
 export default {
   namespaced: true,
   state: {
+    authCode: ''
   },
   getters: {
   },
@@ -13,15 +12,23 @@ export default {
   },
   actions: {
     // 获取wx.login授权code
-    async getAuthCode ({ commit }) {
-      commit('setAuthCodeLoading', true)
-      const ret = await wxs.getAuthCode()
-      if (ret['errMsg'] === 'login:ok') {
-        commit('setAuthCode', ret.code)
-      } else {
-        console.log('获取登录code失败')
-      }
-      commit('setAuthCodeLoading', false)
+    getAuthCode ({ commit }) {
+      wx.login({
+        success (res) {
+          if (res.code) {
+            commit('setAuthCode', res.code)
+          } else {
+            wx.showToast({
+              title: res.errMsg, // 提示的内容,
+              icon: 'none'})
+          }
+        },
+        fail (res) {
+          wx.showToast({
+            title: '授权失败,请稍后再试~', // 提示的内容,
+            icon: 'none'})
+        }
+      })
     }
   }
 }

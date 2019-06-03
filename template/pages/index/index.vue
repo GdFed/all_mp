@@ -1,11 +1,9 @@
 <template>
   <div class="contain">
-    welcome to All_mp
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -14,19 +12,25 @@ export default {
   components: {
   },
   computed: {
-    // ...mapGetters({
-    //   needGetUnionId: 'user/needGetUnionId',
-    //   needGetAuthTel: 'user/needGetAuthTel'
-    // }),
-    ...mapState({
-    })
+  },
+  onLoad () {
+  },
+  onHide () {
+  },
+  onShow () {
   },
   methods: {
-  },
-  async onShow () {
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.contain{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+}
 </style>

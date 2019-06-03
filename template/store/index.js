@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 import config from '&/config'
-import wxs from '&/api/wxs'
 
 import user from './module/user'
 Vue.use(Vuex)
@@ -20,7 +20,8 @@ const store = new Vuex.Store({
       ...initPageInfo
     },
     iphoneX: false,
-    systemInfo: wxs.getStorageSync('systemInfo')
+    userInfo: wx.getStorageSync('userInfo'),
+    systemInfo: wx.getStorageSync('systemInfo')
   },
   mutations: {
     setIphoneX (state, data) {
@@ -28,27 +29,45 @@ const store = new Vuex.Store({
     },
     setSystemInfo (state, data) {
       state.systemInfo = data
-      wxs.setStorageSync('systemInfo', data)
+      wx.setStorageSync('systemInfo', data)
+    },
+    setUserInfo (state, data) {
+      state.userInfo = data
+      wx.setStorageSync('userInfo', data)
+    }
+  },
+  getters: {
+    needAuthInfo (state) {
+      return !state.userInfo.avatarUrl
+    },
+    needAuthTel (state) {
+      return !state.userInfo.phoneNumber
     }
   },
   actions: {
     async getSystemInfo ({ commit }) {
       try {
-        let ret = await wxs.getSystemInfo()
+        let ret = wx.getSystemInfoSync()
         const { model } = ret
         commit('setSystemInfo', ret)
         commit('setIphoneX', model.search('iPhone X') !== -1)
       } catch (e) {
         console.log(e)
       }
-    },
-    callServicePhone ({ state }) {
-      wx.makePhoneCall({ phoneNumber: state.serviceTel })
     }
   },
   modules: {
     user
-  }
+  },
+  plugins: [
+    createPersistedState({
+      storage: {
+        getItem: key => wx.getStorageSync(key),
+        setItem: (key, value) => wx.setStorageSync(key, value),
+        removeItem: key => {}
+      }
+    })
+  ]
 })
 
 export default store

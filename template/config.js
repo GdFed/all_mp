@@ -1,17 +1,8 @@
 export const isProd = process.env.NODE_ENV === 'production'
 
-export let pid = '1196'
-export const platform = '2'
-export const apiBase = 'https://api.huishoubao.com/'
-export const baseHost = 'https://mobile.huishoubao.com/'
-export const selfReportUri = 'https://logreport.huishoubao.com/selfreport/'
-
-export const logreport = {
-  callee: '被调用者ID',
-  calleeIp: '被调用者IP',
-  caller: '调用者ID',
-  callerIp: '调用者IP'
-}
+export let pid = 'XXXX'
+export const platform = '1'
+export const apiBase = 'https://api.xxxx.com/'
 
 export const validations = [{
   name: 'userName',
@@ -41,15 +32,16 @@ export const validations = [{
 
 // 小程序版本号
 export const version = 'V1.0.0'
+export const appid = 'wx58f984ee339d8d54'
+export const secret = '1de7409a53b7ba2e2540ad21844c424f'
 
 export default {
+  appid,
+  secret,
   version,
   isProd,
   pid,
-  baseHost,
   platform,
   apiBase,
-  validations,
-  selfReportUri,
-  logreport
+  validations
 }
